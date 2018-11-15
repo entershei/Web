@@ -40,6 +40,12 @@ header .languages {
     right: 0;
 }
 
+header .authorized-box {
+    position: absolute;
+    top: 32px;
+    right: 0;
+}
+
 header .enter-or-register-box {
     position: absolute;
     top: 32px;
@@ -111,6 +117,11 @@ aside section .header:before {
 
 aside section .body {
     padding: 1rem;
+}
+
+aside section .body .news {
+    padding: 1rem;
+    overflow: auto;
 }
 
 aside section .footer {

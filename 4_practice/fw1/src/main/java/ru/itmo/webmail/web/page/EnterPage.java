@@ -2,7 +2,6 @@ package ru.itmo.webmail.web.page;
 
 import ru.itmo.webmail.model.domain.User;
 import ru.itmo.webmail.model.exception.ValidationException;
-import ru.itmo.webmail.model.service.UserService;
 import ru.itmo.webmail.web.exception.RedirectException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,25 +9,21 @@ import java.util.Map;
 
 public class EnterPage extends Page{
     private void enter(HttpServletRequest request, Map<String, Object> view) {
-        User user = new User();
-        user.setLogin(request.getParameter("login"));
+        String login = request.getParameter("login");
         String password = request.getParameter("password");
-        String passwordConfirmation = request.getParameter("passwordConfirmation");
-        String email = request.getParameter("email");
+        User user;
 
         try {
-            getUserService().validateRegistration(user, password, passwordConfirmation, email);
+            user = getUserService().validateEnter(login, password);
         } catch (ValidationException e) {
-            view.put("login", user.getLogin());
+            view.put("login", login);
             view.put("password", password);
-            view.put("passwordConfirmation", passwordConfirmation);
             view.put("error", e.getMessage());
-            view.put("email", email);
             return;
         }
 
-        getUserService().register(user, password, email);
-        throw new RedirectException("/index", "registrationDone");
+        request.getSession().setAttribute("user", user);
+        throw new RedirectException("/index", "enterDone");
     }
 
     private void action(HttpServletRequest request, Map<String, Object> view) {

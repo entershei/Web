@@ -6,6 +6,7 @@ import ru.itmo.webmail.model.exception.ValidationException;
 import ru.itmo.webmail.model.repository.UserRepository;
 import ru.itmo.webmail.model.repository.impl.UserRepositoryImpl;
 
+import javax.servlet.http.HttpServletRequest;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
@@ -59,9 +60,13 @@ public class UserService {
         }
     }
 
+    private String getPasswordSha1(String password) {
+        return Hashing.sha256().hashString(USER_PASSWORD_SALT + password,
+                StandardCharsets.UTF_8).toString();
+    }
+
     public void register(User user, String password, String email) {
-        user.setPasswordSha1(Hashing.sha256().hashString(USER_PASSWORD_SALT + password,
-                StandardCharsets.UTF_8).toString());
+        user.setPasswordSha1(getPasswordSha1(password));
         user.setId(newId());
         user.setEmail(email);
         userRepository.save(user);
@@ -85,4 +90,20 @@ public class UserService {
     }
 
     public long findCount() { return userRepository.findCount(); }
+
+    public User validateEnter(String login, String password) throws ValidationException {
+        User user = userRepository.findByLogin(login);
+        if (user == null) {
+            throw new ValidationException("There is no user with this login");
+        }
+
+        if (user.getPasswordSha1().equals(getPasswordSha1(password))) {
+            return user;
+        }
+        throw new ValidationException("Wrong password");
+    }
+
+    public static void logout(HttpServletRequest request) {
+        request.getSession().removeAttribute("user");
+    }
 }
