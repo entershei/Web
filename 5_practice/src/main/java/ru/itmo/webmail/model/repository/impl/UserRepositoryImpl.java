@@ -186,6 +186,12 @@ public class UserRepositoryImpl implements UserRepository {
         }
     }
 
+    @Override
+    public void setConfirmedById(long id) {
+        User user = find(id);
+        user.setConfirmed(true);
+    }
+
     private Date findCreationTime(long userId) {
         try (Connection connection = DATA_SOURCE.getConnection()) {
             try (PreparedStatement statement = connection.prepareStatement(

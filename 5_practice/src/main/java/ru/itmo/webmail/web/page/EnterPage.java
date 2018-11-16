@@ -23,10 +23,16 @@ public class EnterPage extends Page {
         }
 
         User user = getUserService().authorize(loginOrEmail, password);
-        request.getSession(true).setAttribute(USER_ID_SESSION_KEY, user.getId());
-        getEventService().addEnter(user.getId());
 
-        throw new RedirectException("/index");
+        if (user.getConfirmed()) {
+            request.getSession(true).setAttribute(USER_ID_SESSION_KEY, user.getId());
+            getEventService().addEnter(user.getId());
+            throw new RedirectException("/index");
+        } else {
+            view.put("loginOrEmail", loginOrEmail);
+            view.put("password", password);
+            view.put("error", "This user is't confirmed");
+        }
     }
 
     private void action(HttpServletRequest request, Map<String, Object> view) {

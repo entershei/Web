@@ -1,6 +1,8 @@
 package ru.itmo.webmail.web.page;
 
+import ru.itmo.webmail.model.domain.EmailConfirmation;
 import ru.itmo.webmail.model.domain.User;
+import ru.itmo.webmail.model.service.EmailConfirmationService;
 import ru.itmo.webmail.model.service.EventService;
 import ru.itmo.webmail.model.service.UserService;
 
@@ -12,6 +14,7 @@ public class Page {
 
     private UserService userService = new UserService();
     private EventService eventService = new EventService();
+    private EmailConfirmationService emailConfirmationService = new EmailConfirmationService();
 
     private User user;
 
@@ -21,6 +24,10 @@ public class Page {
 
     EventService getEventService() {
         return eventService;
+    }
+
+    EmailConfirmationService getEmailConfirmationService() {
+        return emailConfirmationService;
     }
 
     public User getUser() {

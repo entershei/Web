@@ -3,6 +3,7 @@ package ru.itmo.webmail.model.service;
 import com.google.common.hash.Hashing;
 import ru.itmo.webmail.model.domain.User;
 import ru.itmo.webmail.model.exception.ValidationException;
+import ru.itmo.webmail.model.repository.EmailConfirmationRepository;
 import ru.itmo.webmail.model.repository.UserRepository;
 import ru.itmo.webmail.model.repository.impl.UserRepositoryImpl;
 
@@ -52,6 +53,8 @@ public class UserService {
         String passwordSha = getPasswordSha(password);
         userRepository.save(user, passwordSha);
     }
+
+    public void confirmById(long userId) {  userRepository.setConfirmedById(userId); }
 
     public List<User> findAll() {
         return userRepository.findAll();
