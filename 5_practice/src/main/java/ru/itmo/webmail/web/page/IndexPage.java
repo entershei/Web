@@ -9,7 +9,7 @@ public class IndexPage extends Page {
     }
 
     private void registrationDone(HttpServletRequest request, Map<String, Object> view) {
-        view.put("message", "You have been registered");
+        view.put("message", "You have been registered. Please, confirm your email.");
     }
 
     private void cannotregister(HttpServletRequest request, Map<String, Object> view) {

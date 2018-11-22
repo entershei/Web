@@ -1,6 +1,7 @@
 package ru.itmo.webmail.model.service;
 
 import com.google.common.hash.Hashing;
+import ru.itmo.webmail.model.domain.EmailConfirmation;
 import ru.itmo.webmail.model.domain.User;
 import ru.itmo.webmail.model.exception.ValidationException;
 import ru.itmo.webmail.model.repository.EmailConfirmationRepository;

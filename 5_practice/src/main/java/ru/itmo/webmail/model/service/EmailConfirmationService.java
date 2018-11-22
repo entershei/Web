@@ -14,4 +14,8 @@ public class EmailConfirmationService {
     public EmailConfirmation findSecret(String secret) {
         return emailConfirmationRepository.findBySecret(secret);
     }
+
+    public void save(long userId) {
+        emailConfirmationRepository.save(userId);
+    }
 }

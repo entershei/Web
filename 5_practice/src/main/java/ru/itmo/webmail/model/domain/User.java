@@ -7,8 +7,8 @@ public class User implements Serializable {
     private long id;
     private String login;
     private String email;
+    private boolean confirmed;
     private Date creationTime;
-    private boolean confirmed = true;
 
     public long getId() {
         return id;

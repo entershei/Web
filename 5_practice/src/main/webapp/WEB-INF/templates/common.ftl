@@ -48,7 +48,7 @@
                 nulla placeat quam suscipit unde voluptatibus.
             </div>
             <div class="footer">
-                <a href="#">View all</a>
+                <a href="/users">View all</a>
             </div>
         </section>
     </aside>

@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 public class ConfirmPage extends Page {
-    private void emailConfirmation(HttpServletRequest request, Map<String, Object> view) {
+    private void confirm(HttpServletRequest request, Map<String, Object> view) {
         String secret = request.getParameter("secret");
         if (secret == null) {
             view.put("message", "No Confirmation Secret");
@@ -27,6 +27,6 @@ public class ConfirmPage extends Page {
     }
 
     private void action(HttpServletRequest request, Map<String, Object> view) {
-        // No operations.
+        confirm(request, view);
     }
 }

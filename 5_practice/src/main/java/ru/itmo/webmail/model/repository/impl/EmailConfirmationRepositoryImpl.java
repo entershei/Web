@@ -37,7 +37,7 @@ public class EmailConfirmationRepositoryImpl implements EmailConfirmationReposit
     public EmailConfirmation findBySecret(String secret) {
         try (Connection connection = DATA_SOURCE.getConnection()) {
             try (PreparedStatement statement = connection.prepareStatement(
-                    "SELECT * FROM User WHERE secret=?")) {
+                    "SELECT * FROM EmailConfirmation WHERE secret=?")) {
                 statement.setString(1, secret);
                 try (ResultSet resultSet = statement.executeQuery()) {
                     if (resultSet.next()) {
@@ -50,6 +50,38 @@ public class EmailConfirmationRepositoryImpl implements EmailConfirmationReposit
         } catch (SQLException e) {
             throw new RepositoryException("Can't find User by secret.", e);
         }
+    }
+
+    @Override
+    public void save(long userId) {
+        String secret = genNewSecret(userId);
+        try (Connection connection = DATA_SOURCE.getConnection()) {
+            try (PreparedStatement statement = connection.prepareStatement(
+                    "INSERT INTO EmailConfirmation (userId, secret, creationTime) VALUES (?, ?, NOW())",
+                    Statement.RETURN_GENERATED_KEYS)) {
+                statement.setLong(1, userId);
+                statement.setString(2, secret);
+                if (statement.executeUpdate() == 1) {
+                } else {
+                    throw new RepositoryException("Can't save EmailConfirmation.");
+                }
+            }
+        } catch (SQLException e) {
+            throw new RepositoryException("Can't save EmailConfirmation.", e);
+        }
+    }
+
+    private String genNewSecret(long userId) {
+        StringBuilder secret = new StringBuilder();
+        String key = "HelloWorld";
+
+        for (int i = 0; i < key.length(); ++i) {
+            secret.append(key.charAt(i));
+            secret.append(userId % 10);
+            userId /= 10;
+        }
+
+        return secret.toString();
     }
 
     private EmailConfirmation toEmailConfirmation (ResultSetMetaData metaData, ResultSet resultSet)

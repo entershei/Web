@@ -26,6 +26,7 @@ public class RegisterPage extends Page {
         }
 
         getUserService().register(user, password);
+        getEmailConfirmationService().save(user.getId());
         throw new RedirectException("/index", "registrationDone");
     }
 

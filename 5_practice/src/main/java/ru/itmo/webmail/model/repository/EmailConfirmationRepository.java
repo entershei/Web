@@ -7,4 +7,5 @@ import java.util.List;
 public interface EmailConfirmationRepository {
     public List<EmailConfirmation> findAll();
     public EmailConfirmation findBySecret(String secret);
+    public void save(long userId);
 }

@@ -149,6 +149,8 @@ public class UserRepositoryImpl implements UserRepository {
                 user.setLogin(resultSet.getString(i));
             } else if ("email".equalsIgnoreCase(columnName)) {
                 user.setEmail(resultSet.getString(i));
+            } else if ("confirmed".equalsIgnoreCase(columnName)) {
+                user.setConfirmed(resultSet.getBoolean(i));
             } else if ("passwordSha".equalsIgnoreCase(columnName)) {
                 // No operations.
             } else if ("creationTime".equalsIgnoreCase(columnName)) {
@@ -164,11 +166,12 @@ public class UserRepositoryImpl implements UserRepository {
     public void save(User user, String passwordSha) {
         try (Connection connection = DATA_SOURCE.getConnection()) {
             try (PreparedStatement statement = connection.prepareStatement(
-                    "INSERT INTO User (login, email, passwordSha, creationTime) VALUES (?, ?, ?, NOW())",
+                    "INSERT INTO User (login, email, confirmed, passwordSha, creationTime) VALUES (?, ?, ?, ?, NOW())",
                     Statement.RETURN_GENERATED_KEYS)) {
                 statement.setString(1, user.getLogin());
                 statement.setString(2, user.getEmail());
-                statement.setString(3, passwordSha);
+                statement.setBoolean(3, false);
+                statement.setString(4, passwordSha);
                 if (statement.executeUpdate() == 1) {
                     ResultSet generatedIdResultSet = statement.getGeneratedKeys();
                     if (generatedIdResultSet.next()) {
@@ -188,8 +191,19 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public void setConfirmedById(long id) {
-        User user = find(id);
-        user.setConfirmed(true);
+        try (Connection connection = DATA_SOURCE.getConnection()) {
+            try (PreparedStatement statement = connection.prepareStatement(
+                    "UPDATE User SET confirmed=true where id =?")) {
+                statement.setLong(1, id);
+                if (statement.executeUpdate() == 1) {
+                    //No operations.
+                } else {
+                    throw new RepositoryException("Can't set confirmation.");
+                }
+            }
+        } catch (SQLException e) {
+            throw new RepositoryException("Can't set confirmation.", e);
+        }
     }
 
     private Date findCreationTime(long userId) {
