@@ -37,7 +37,7 @@
     </div>
 </div>
 <div class="datatable">
-    <div class="caption">Talks</div>
+    <div class="caption">All message</div>
     <table>
         <thead>
         <tr>
@@ -61,15 +61,5 @@
         </tr>
         </#list>
     </table>
-</div>
-
-<div class="Message">
-    <div class="caption">Talks</div>
-            <#list talks as talk>
-                <div class="frontTalk">
-                    from ${talk.sourceUserId} to ${talk.targetUserId} →
-                    ${talk.text}
-                </div>
-            </#list>
 </div>
 </@c.page>

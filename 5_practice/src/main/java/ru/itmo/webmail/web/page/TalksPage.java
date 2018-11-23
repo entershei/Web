@@ -24,7 +24,7 @@ public class TalksPage extends Page {
         Talk talk = new Talk();
         talk.setSourceUserId(user.getId());
 
-        String loginTargetUser = (String) request.getSession().getAttribute("loginTargetUser");
+        String loginTargetUser = request.getParameter("loginTargetUser");
         String text = request.getParameter("text");
 
         try {
