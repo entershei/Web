@@ -85,6 +85,10 @@ public class UserService {
         }
     }
 
+    public User findByLogin(String login) {
+        return userRepository.findByLogin(login);
+    }
+
     private String getPasswordSha(String password) {
         return Hashing.sha256().hashString(USER_PASSWORD_SALT + password,
                 StandardCharsets.UTF_8).toString();

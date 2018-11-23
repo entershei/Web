@@ -21,6 +21,8 @@
         <#if user??>
             ${user.login}
             |
+            <a href="/talks">Talks</a>
+            |
             <a href="/logout">Logout</a>
         <#else>
             <a href="/enter">Enter</a>

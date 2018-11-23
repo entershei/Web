@@ -15,4 +15,8 @@ public class IndexPage extends Page {
     private void cannotregister(HttpServletRequest request, Map<String, Object> view) {
         view.put("message", "This email is already taken");
     }
+
+    private void canNotSendMessage(HttpServletRequest request, Map<String, Object> view) {
+        view.put("message", "Can't send message, because there haven't user.");
+    }
 }

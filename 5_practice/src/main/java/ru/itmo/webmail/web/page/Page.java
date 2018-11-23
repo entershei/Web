@@ -1,9 +1,9 @@
 package ru.itmo.webmail.web.page;
 
-import ru.itmo.webmail.model.domain.EmailConfirmation;
 import ru.itmo.webmail.model.domain.User;
 import ru.itmo.webmail.model.service.EmailConfirmationService;
 import ru.itmo.webmail.model.service.EventService;
+import ru.itmo.webmail.model.service.TalksService;
 import ru.itmo.webmail.model.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +15,7 @@ public class Page {
     private UserService userService = new UserService();
     private EventService eventService = new EventService();
     private EmailConfirmationService emailConfirmationService = new EmailConfirmationService();
+    private TalksService talksService = new TalksService();
 
     private User user;
 
@@ -29,6 +30,8 @@ public class Page {
     EmailConfirmationService getEmailConfirmationService() {
         return emailConfirmationService;
     }
+
+    TalksService getTalkService() { return talksService; }
 
     public User getUser() {
         return user;
