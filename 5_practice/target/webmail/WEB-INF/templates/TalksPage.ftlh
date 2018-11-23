@@ -1,4 +1,6 @@
 <#-- @ftlvariable name="users" type="ru.itmo.webmail.model.domain.User[]" -->
+<#-- @ftlvariable name="talks" type="ru.itmo.webmail.model.domain.Talk[]" -->
+
 <#import "common.ftl" as c>
 
 <@c.page>
@@ -33,5 +35,41 @@
             </#if>
         </form>
     </div>
+</div>
+<div class="datatable">
+    <div class="caption">Talks</div>
+    <table>
+        <thead>
+        <tr>
+            <th>From</th>
+            <th>To</th>
+            <th>Test</th>
+        </tr>
+        </thead>
+        <tbody>
+        <#list talks as talk>
+        <tr>
+            <td>
+                ${talk.sourceUserId}
+            </td>
+            <td>
+                ${talk.targetUserId}
+            </td>
+            <td>
+                ${talk.text}
+            </td>
+        </tr>
+        </#list>
+    </table>
+</div>
+
+<div class="Message">
+    <div class="caption">Talks</div>
+            <#list talks as talk>
+                <div class="frontTalk">
+                    from ${talk.sourceUserId} to ${talk.targetUserId} →
+                    ${talk.text}
+                </div>
+            </#list>
 </div>
 </@c.page>

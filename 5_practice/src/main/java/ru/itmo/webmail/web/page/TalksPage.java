@@ -49,7 +49,12 @@ public class TalksPage extends Page {
     }
 
     private void findAllForUser(HttpServletRequest request, Map<String, Object> view) {
-        User user = (User) request.getSession().getAttribute("userId");
+        User user = getUser();
+
+        if (user == null) {
+            view.put("error", "Сan't show message, because there haven't user.");
+            throw new RedirectException("/index", "canNotSendMessage");
+        }
 
         view.put("talks", getTalkService().findAllForUser(user.getId()));
         view.put("userCount", getTalkService().findCountForUser(user.getId()));
@@ -62,11 +67,8 @@ public class TalksPage extends Page {
 
     @Override
     public void before(HttpServletRequest request, Map<String, Object> view) {
-        //TODO about findAll
-    }
+        super.before(request, view);
 
-    @Override
-    public void after(HttpServletRequest request, Map<String, Object> view) {
-        //TODO
+        findAllForUser(request, view);
     }
 }
