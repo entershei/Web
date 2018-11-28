@@ -1,7 +1,7 @@
 <#import "common.ftl" as c>
 
 <@c.page>
-<div class="form-box">
+<div class="enter form-box">
     <div class="header">Enter</div>
     <div class="body">
         <form method="post" action="/enter">
@@ -25,11 +25,7 @@
             <div class="button-field">
                 <input type="submit" value="Enter">
             </div>
-            <#if error??>
-            <div class="error">
-                ${error}
-            </div>
-            </#if>
+            <div class="error"></div>
         </form>
     </div>
 </div>

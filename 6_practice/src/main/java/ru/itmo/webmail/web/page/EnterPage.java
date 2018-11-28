@@ -1,7 +1,6 @@
 package ru.itmo.webmail.web.page;
 
 import ru.itmo.webmail.model.exception.ValidationException;
-import ru.itmo.webmail.web.exception.RedirectException;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
@@ -14,16 +13,15 @@ public class EnterPage extends Page {
         try {
             getUserService().validateEnter(login, password);
         } catch (ValidationException e) {
-            view.put("login", login);
-            view.put("password", password);
+            view.put("success", false);
             view.put("error", e.getMessage());
             return view;
         }
 
         login(request, getUserService().authenticate(login, password));
+        view.put("success", true);
 
         return view;
-
     }
 
     private void action(HttpServletRequest request, Map<String, Object> view) {
