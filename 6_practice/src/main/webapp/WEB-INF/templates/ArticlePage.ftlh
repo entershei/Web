@@ -24,12 +24,13 @@
 <script>
     $(function() {
         $(".article form").submit(function () {
-            var title = $(this).find("input[name='title']").val();
+            var title = $(this).find("input[id='title']").val();
             var text = $('textarea#text').val();
             var $error = $(this).find(".error").text("");
             $.post("", {action: "sendArticle", title: title, text: text}, function (response) {
                 if (response["success"]) {
                     setMessage("You have sent article.");
+                    document.location.href = "/";
                 } else {
                     $error.text(response["error"]);
                 }
