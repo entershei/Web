@@ -1,13 +1,13 @@
 package ru.itmo.webmail.model.domain;
 
-import javax.xml.crypto.Data;
+import java.util.Date;
 
 public class Article {
     private long id;
     private long userId;
     private String title;
     private String text;
-    private Data creationTime;
+    private Date creationTime;
 
     public void setId(long id) {
         this.id = id;
@@ -25,7 +25,7 @@ public class Article {
         this.text = text;
     }
 
-    public void setCreationTime(Data creationTime) {
+    public void setCreationTime(Date creationTime) {
         this.creationTime = creationTime;
     }
 
@@ -45,7 +45,7 @@ public class Article {
         return text;
     }
 
-    public Data getCreationTime() {
+    public Date getCreationTime() {
         return creationTime;
     }
 }

@@ -26,7 +26,7 @@ public class ArticleRepositoryImpl implements ArticleRepository {
                     ResultSet generatedIdResultSet = statement.getGeneratedKeys();
                     if (generatedIdResultSet.next()) {
                         article.setId(generatedIdResultSet.getLong(1));
-                        article.setCreationTime((Data) findCreationTime(article.getId()));
+                        article.setCreationTime((Date) findCreationTime(article.getId()));
                     } else {
                         throw new RepositoryException("Can't find id of saved Article.");
                     }
