@@ -23,6 +23,8 @@
         <#if user??>
             ${user.login}
             |
+            <a href="/article">Article</a>
+            |
             <a href="/logout">Logout</a>
         <#else>
             <a href="/enter">Enter</a>

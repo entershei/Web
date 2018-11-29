@@ -37,7 +37,7 @@
             var $error = $(this).find(".error").text("");
             $.post("", {action: "enter", login: login, password: password}, function (response) {
                 if (response["success"]) {
-                    setMessage("You are enter. Welcome!");
+                    setMessage("You have entered. Welcome!");
                     document.location.href = "/";
                 } else {
                     $error.text(response["error"]);

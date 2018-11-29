@@ -6,6 +6,7 @@
     --error-color: red;
     --datatable-color: #E1E1E1;
     --datatable-dark-cell-color: #f8f8f8;
+    --border-for-text-color: #A9A9A9;
     color: var(--black-color);
     font-family: Verdana, sans-serif;
     font-size: 16px;
@@ -84,6 +85,12 @@ header nav ul li a {
 .middle {
     margin-top: 1rem;
     overflow: auto;
+}
+
+.form-box .text-area {
+    width: 90%;
+    height: 15rem;
+    margin-left: 4%;
 }
 
 aside {

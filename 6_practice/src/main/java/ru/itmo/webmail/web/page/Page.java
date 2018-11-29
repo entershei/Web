@@ -1,6 +1,7 @@
 package ru.itmo.webmail.web.page;
 
 import ru.itmo.webmail.model.domain.User;
+import ru.itmo.webmail.model.service.ArticleService;
 import ru.itmo.webmail.model.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,12 +11,15 @@ public class Page {
     static final String USER_ID_SESSION_KEY = "userId";
 
     private UserService userService = new UserService();
+    private ArticleService articleService = new ArticleService();
 
     private User user;
 
     protected UserService getUserService() {
         return userService;
     }
+
+    protected ArticleService getArticleService() { return articleService; }
 
     protected User getUser() {
         return user;
