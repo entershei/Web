@@ -50,10 +50,10 @@
         <#list talks as talk>
         <tr>
             <td>
-                ${talk.sourceUserId}
+                ${userService.find(talk.sourceUserId).getLogin()}
             </td>
             <td>
-                ${talk.targetUserId}
+                ${userService.find(talk.targetUserId).getLogin()}
             </td>
             <td>
                 ${talk.text}

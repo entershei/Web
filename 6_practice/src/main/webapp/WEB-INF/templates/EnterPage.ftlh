@@ -30,7 +30,7 @@
     </div>
 </div>
 <script>
-    $(function() {
+    $(function () {
         $(".enter form").submit(function () {
             var login = $(this).find("input[name='login']").val();
             var password = $(this).find("input[name='password']").val();

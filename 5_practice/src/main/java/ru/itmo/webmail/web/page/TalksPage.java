@@ -68,7 +68,7 @@ public class TalksPage extends Page {
     @Override
     public void before(HttpServletRequest request, Map<String, Object> view) {
         super.before(request, view);
-
+        view.put("userService", getUserService());
         findAllForUser(request, view);
     }
 }

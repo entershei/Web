@@ -51,7 +51,7 @@
                     data: {
                         handles: logins.join(";")
                     },
-                    success: function(response) {
+                    success: function (response) {
                         if (response["status"] === "OK") {
                             response["result"].forEach(function (user) {
                                 $("#user_" + user.handle.toLowerCase()).find(".rating").text(user["rating"]);

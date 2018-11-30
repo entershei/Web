@@ -8,7 +8,7 @@
             <input type="hidden" name="action" value="sendArticle">
             <div class="field">
                 <input class="title-input" id="title"
-                    placeholder="Your title"${title!}/>
+                       placeholder="Your title"${title!}/>
             </div>
             <div class="field">
                 <textarea class="text-area" id="text"
@@ -22,7 +22,7 @@
     </div>
 </div>
 <script>
-    $(function() {
+    $(function () {
         $(".article form").submit(function () {
             var title = $(this).find("input[id='title']").val();
             var text = $('textarea#text').val();
