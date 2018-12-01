@@ -15,7 +15,7 @@
     <div class="body">
         <form method="post" action="/notice">
             <div class="field">
-                <textarea class="text-area" id="content" cols="49" rows="17"
+                <textarea class="text-area" name="content" id="content" cols="49" rows="17"
                           placeholder="Your notice">${noticeForm.content!}</textarea>
                 <@error 'noticeForm.content'/>
             </div>
