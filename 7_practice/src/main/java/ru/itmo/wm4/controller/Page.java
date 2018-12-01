@@ -23,6 +23,10 @@ public class Page {
     @Autowired
     private NoticeService noticeService;
 
+    public NoticeService getNoticeService() {
+        return noticeService;
+    }
+
     @ModelAttribute
     public User getUser(HttpSession httpSession) {
         return userService.findById((Long) httpSession.getAttribute(USER_ID_SESSION_KEY));

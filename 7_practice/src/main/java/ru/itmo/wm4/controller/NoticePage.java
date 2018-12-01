@@ -6,6 +6,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import ru.itmo.wm4.domain.Notice;
 import ru.itmo.wm4.form.NoticeCredentials;
 
 import javax.servlet.http.HttpSession;
@@ -25,6 +26,8 @@ public class NoticePage extends Page {
         if (bindingResult.hasErrors()) {
             return "NoticePage";
         }
+
+        getNoticeService().addNotice(noticeForm);
 
         return "redirect:/";
     }
