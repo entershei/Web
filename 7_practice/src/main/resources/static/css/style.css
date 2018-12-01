@@ -95,6 +95,10 @@ main {
     margin-right: 21rem;
 }
 
+section div.noticeDate {
+    margin-bottom: 1rem;
+}
+
 footer {
     margin-top: 2rem;
     border-top: 1px solid var(--border-color);

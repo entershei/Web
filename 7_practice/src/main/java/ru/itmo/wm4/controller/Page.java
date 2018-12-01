@@ -3,10 +3,13 @@ package ru.itmo.wm4.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import ru.itmo.wm4.domain.Notice;
 import ru.itmo.wm4.domain.User;
+import ru.itmo.wm4.service.NoticeService;
 import ru.itmo.wm4.service.UserService;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 public class Page {
@@ -16,9 +19,18 @@ public class Page {
     @Autowired
     private UserService userService;
 
+    @SuppressWarnings("SpringJavaAutowiredFieldsWarningInspection")
+    @Autowired
+    private NoticeService noticeService;
+
     @ModelAttribute
     public User getUser(HttpSession httpSession) {
         return userService.findById((Long) httpSession.getAttribute(USER_ID_SESSION_KEY));
+    }
+
+    @ModelAttribute(name = "notices")
+    public List<Notice> getNotice(HttpSession httpSession) {
+        return noticeService.findAll();
     }
 
     void setUser(HttpSession httpSession, User user) {

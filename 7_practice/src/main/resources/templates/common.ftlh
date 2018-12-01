@@ -45,11 +45,14 @@
                 Pay attention
             </div>
             <div class="body">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate ducimus enim facere impedit nobis,
-                nulla placeat quam suscipit unde voluptatibus.
+                <#list notices as notice>
+                    <div class="noticeId"> id: ${notice.id} </div>
+                    <div class="noticeContent"> ${notice.content} </div>
+                    <div class="noticeDate"> date: ${notice.creationTime} </div>
+                </#list>
             </div>
             <div class="footer">
-                <a href="#">View all</a>
+                <a href="/users">View all</a>
             </div>
         </section>
     </aside>
