@@ -2,10 +2,12 @@ package ru.itmo.wm4.service;
 
 import org.springframework.stereotype.Service;
 import ru.itmo.wm4.domain.User;
+import ru.itmo.wm4.form.ChangeDisableCredentials;
 import ru.itmo.wm4.form.UserCredentials;
 import ru.itmo.wm4.repository.UserRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -37,5 +39,19 @@ public class UserService {
 
     public List<User> findAll() {
         return userRepository.findAll();
+    }
+
+    public void changeDisable(ChangeDisableCredentials changeDisableForm) {
+        User user = userRepository.findById(changeDisableForm.getUserId()).orElse(null);
+
+        if (user == null) {
+            return;
+        }
+
+        if (user.getDisabled()) {
+            userRepository.updateDisabled(user.getId(), false);
+        } else {
+            userRepository.updateDisabled(user.getId(), true);
+        }
     }
 }

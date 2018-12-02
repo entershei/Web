@@ -1,12 +1,12 @@
-window.setMessage = function(message) {
+window.setMessage = function (message) {
     localStorage.setItem("message", message);
 };
 
-window.getMessage = function() {
+window.getMessage = function () {
     return localStorage.getItem("message");
 };
 
-window.removeMessage = function() {
+window.removeMessage = function () {
     return localStorage.removeItem("message");
 };
 

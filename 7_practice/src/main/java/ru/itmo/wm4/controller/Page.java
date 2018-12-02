@@ -23,7 +23,8 @@ public class Page {
     @Autowired
     private NoticeService noticeService;
 
-    public NoticeService getNoticeService() {
+    @ModelAttribute
+    NoticeService getNoticeService() {
         return noticeService;
     }
 

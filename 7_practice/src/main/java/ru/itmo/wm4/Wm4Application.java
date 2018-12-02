@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class Wm4Application {
-	public static void main(String[] args) {
-		SpringApplication.run(Wm4Application.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(Wm4Application.class, args);
+    }
 }

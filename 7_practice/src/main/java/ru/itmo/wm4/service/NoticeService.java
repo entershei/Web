@@ -1,11 +1,8 @@
 package ru.itmo.wm4.service;
 
-import org.aspectj.weaver.ast.Not;
 import org.springframework.stereotype.Service;
 import ru.itmo.wm4.domain.Notice;
-import ru.itmo.wm4.domain.User;
 import ru.itmo.wm4.form.NoticeCredentials;
-import ru.itmo.wm4.form.UserCredentials;
 import ru.itmo.wm4.repository.NoticeRepository;
 
 import java.util.List;

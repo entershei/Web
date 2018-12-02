@@ -26,20 +26,20 @@ public class Notice {
         return id;
     }
 
-    public String getContent() {
-        return content;
-    }
-
-    public Date getCreationTime() {
-        return creationTime;
-    }
-
     public void setId(long id) {
         this.id = id;
     }
 
+    public String getContent() {
+        return content;
+    }
+
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public Date getCreationTime() {
+        return creationTime;
     }
 
     public void setCreationTime(Date creationTime) {

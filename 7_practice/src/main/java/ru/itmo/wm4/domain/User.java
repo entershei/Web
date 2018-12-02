@@ -18,6 +18,8 @@ public class User {
     @NotEmpty
     private String login;
 
+    private boolean disabled = false;
+
     @CreationTimestamp
     private Date creationTime;
 
@@ -35,6 +37,14 @@ public class User {
 
     public void setLogin(String login) {
         this.login = login;
+    }
+
+    public void setDisabled(boolean disabled) {
+        this.disabled = disabled;
+    }
+
+    public boolean getDisabled() {
+        return disabled;
     }
 
     public Date getCreationTime() {

@@ -15,7 +15,7 @@ public class PersonalInformationPage extends Page {
     }
 
     @GetMapping(path = "user/{id}")
-    public String getPersonalInfo(@PathVariable long id, Model model)  {
+    public String getPersonalInfo(@PathVariable long id, Model model) {
         model.addAttribute("user_information", userService.findById(id));
         return "PersonalInfoPage";
     }
