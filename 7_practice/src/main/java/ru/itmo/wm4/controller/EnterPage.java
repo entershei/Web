@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import ru.itmo.wm4.domain.User;
 import ru.itmo.wm4.form.UserCredentials;
 import ru.itmo.wm4.form.validator.UserCredentialsEnterValidator;
 import ru.itmo.wm4.service.UserService;
@@ -43,7 +44,8 @@ public class EnterPage extends Page {
             return "EnterPage";
         }
 
-        setUser(httpSession, userService.findByLoginAndPassword(registerForm.getLogin(), registerForm.getPassword()));
+        User user = userService.findByLoginAndPassword(registerForm.getLogin(), registerForm.getPassword());
+        setUser(httpSession, user);
         return "redirect:/";
     }
 }

@@ -29,7 +29,7 @@ public class UserCredentialsEnterValidator implements Validator {
                 errors.rejectValue("password", "invalid.login.or.password", "invalid login or password");
             } else {
                 if (user.getDisabled()) {
-                    errors.rejectValue("disabled", "user.disabled", "user disabled");
+                    errors.rejectValue("login", "user.disabled", "user disabled");
                 }
             }
         }
