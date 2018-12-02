@@ -30,30 +30,14 @@
         <td>
             <#if user.disabled??>
                     <form method="post" action="/changeDisable">
-                        <div class="field">
-                            <div type="hidden" class="name">
-                                <label for="changeDisableForm">changeDisableForm</label>
-                            </div>
-                            <div class="value">
-                                <input type="hidden" name="changeDisableForm.userId" value="${user.id!}">
-                            </div>
-                        <@error 'changeDisableForm.userId'/>
-                        </div>
+                        <input type="hidden" name="changeDisableForm.userId" value="${user.id!}">
                         <div class="button-field">
                             <input type="submit" value="Enable">
                         </div>
                     </form>
             <#else>
                     <form method="post" action="/changeDisable">
-                        <div class="field">
-                            <div type="hidden" class="name">
-                                <label for="changeDisableForm">changeDisableForm</label>
-                            </div>
-                            <div class="value">
-                                <input type="hidden" name="changeDisableForm.userId" value="${user.id!}">
-                            </div>
-                        <@error 'changeDisableForm.userId'/>
-                        </div>
+                        <input type="hidden" name="changeDisableForm.userId" value="${user.id!}">
                         <div class="button-field">
                             <input type="submit" value="Disable">
                         </div>
