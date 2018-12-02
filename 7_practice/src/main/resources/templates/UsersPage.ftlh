@@ -28,19 +28,15 @@
         <td>${user.login}</td>
         <td>${user.creationTime}</td>
         <td>
-            <#if user.disabled??>
+            <#if user.disabled>
                     <form method="post" action="/changeDisable">
-                        <input type="hidden" name="changeDisableForm.userId" value="${user.id!}">
-                        <div class="button-field">
-                            <input type="submit" value="Enable">
-                        </div>
+                        <input type="hidden" name="userId" value="${user.id}">
+                        <input type="submit" value="Enable">
                     </form>
             <#else>
                     <form method="post" action="/changeDisable">
-                        <input type="hidden" name="changeDisableForm.userId" value="${user.id!}">
-                        <div class="button-field">
-                            <input type="submit" value="Disable">
-                        </div>
+                        <input type="hidden" name="userId" value="${user.id}">
+                        <input type="submit" value="Disable">
                     </form>
             </#if>
         </td>
