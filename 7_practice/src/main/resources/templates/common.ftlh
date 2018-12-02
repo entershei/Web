@@ -22,6 +22,8 @@
         <#if user??>
             ${user.login}
             |
+            <a href="/notice">Notice</a>
+            |
             <a href="/logout">Logout</a>
         <#else>
             <a href="/enter">Enter</a>

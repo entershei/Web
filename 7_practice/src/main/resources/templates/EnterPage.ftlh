@@ -29,7 +29,7 @@
                     <label for="password">Password</label>
                 </div>
                 <div class="value">
-                    <input id="password" type="password" name="password" value="${enterForm.password!}"/>
+                    <input id="password" type="password" name="password" value="${password!}"/>
                 </div>
                 <@error 'enterForm.password'/>
             </div>

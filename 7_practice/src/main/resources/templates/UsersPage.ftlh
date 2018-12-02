@@ -27,12 +27,13 @@
         <td>${user.id}</td>
         <td>${user.login}</td>
         <td>${user.creationTime}</td>
-        <td> <#if user.disabled??>
-            <form method="post" action="/changeDisable">
-                <div class="button-field">
-                    <input type="submit" value="Enable">
-                </div>
-            </form>
+        <td><input type="hidden" name="changeDisableForm.userId" value="${user.id}">
+            <#if user.disabled??>
+                <form method="post" action="/changeDisable">
+                    <div class="button-field">
+                        <input type="submit" value="Enable">
+                    </div>
+                </form>
         <#else>
                 <form method="post" action="/changeDisable">
                     <div class="button-field">

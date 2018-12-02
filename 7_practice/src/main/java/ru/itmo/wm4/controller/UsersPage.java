@@ -26,12 +26,6 @@ public class UsersPage extends Page {
         return "UsersPage";
     }
 
-    @GetMapping(path = "/changeDisable")
-    public String changeDisabledGet(Model model) {
-        model.addAttribute("changeDisableForm", new ChangeDisableCredentials());
-        return "UsersPage";
-    }
-
     @PostMapping(path = "/changeDisable")
     public String changeDisabledPost(@Valid @ModelAttribute("changeDisableForm") ChangeDisableCredentials changeDisableForm,
                               BindingResult bindingResult, HttpSession httpSession) {
